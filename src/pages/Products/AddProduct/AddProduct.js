@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import MetaTags from "react-meta-tags"
 import { v4 as uuidv4 } from "uuid"
@@ -234,6 +234,10 @@ const EcommerceAddProduct = () => {
     setSelectedFile(file)
     console.log(file)
   }
+
+  useEffect(() => {
+    setactiveTab(1);
+  }, [])
 
   return (
     <React.Fragment>
@@ -569,69 +573,69 @@ const EcommerceAddProduct = () => {
                                                     }
                                                   />
                                                 </div>
-                                                </Col>
+                                              </Col>
                                               <Col>
-                                              <Col  className="mb-3">
-                                    <Label className="control-label">
-                                          Swatch
-                                        </Label>
-                                      {!selectedFile[0].swatch ? (
-                                        <Dropzone
-                                          onDrop={acceptedFiles => {
-                                            handleSwatchAccept(
-                                              acceptedFiles
-                                            )
-                                          }}
-                                          maxFiles={1}
-                                        >
-                                          {({
-                                            getRootProps,
-                                            getInputProps,
-                                          }) => (
-                                            <div
-                                              className="dropzone"
-                                              style={{
-                                                minHeight: "40px",
-                                                height: "40px",
-                                              }}
-                                            >
-                                              <div
-                                                className="needsclick"
-                                                {...getRootProps()}
-                                              >
-                                                <input {...getInputProps()} />
-                                                <div
-                                                  className="dz-message needsclick"
-                                                  style={{
-                                                    display: "flex",
-                                                    fontSize: "10px",
-                                                    padding: "10px",
-                                                  }}
-                                                >
-                                                  <div className="mb-3">
-                                                    <i className="display-7 text-muted bx bxs-cloud-upload" />
-                                                  </div>
-                                                 
-                                                </div>
-                                              </div>
-                                            </div>
-                                          )}
-                                        </Dropzone>
-                                      ) : (
-                                        <div>
-                                        <img
-                                          style={{
-                                            height: "38px",
-                                            width: "40px",
-                                          }}
-                                          key={i}
-                                          src={URL.createObjectURL(selectedFile[0]?.swatch)}
-                                        />
-                                        </div>
-                                      )}
-                                    </Col>
+                                                <Col className="mb-3">
+                                                  <Label className="control-label">
+                                                    Swatch
+                                                  </Label>
+                                                  {!selectedFile[0].swatch ? (
+                                                    <Dropzone
+                                                      onDrop={acceptedFiles => {
+                                                        handleSwatchAccept(
+                                                          acceptedFiles
+                                                        )
+                                                      }}
+                                                      maxFiles={1}
+                                                    >
+                                                      {({
+                                                        getRootProps,
+                                                        getInputProps,
+                                                      }) => (
+                                                        <div
+                                                          className="dropzone"
+                                                          style={{
+                                                            minHeight: "40px",
+                                                            height: "40px",
+                                                          }}
+                                                        >
+                                                          <div
+                                                            className="needsclick"
+                                                            {...getRootProps()}
+                                                          >
+                                                            <input {...getInputProps()} />
+                                                            <div
+                                                              className="dz-message needsclick"
+                                                              style={{
+                                                                display: "flex",
+                                                                fontSize: "10px",
+                                                                padding: "10px",
+                                                              }}
+                                                            >
+                                                              <div className="mb-3">
+                                                                <i className="display-7 text-muted bx bxs-cloud-upload" />
+                                                              </div>
+
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      )}
+                                                    </Dropzone>
+                                                  ) : (
+                                                    <div>
+                                                      <img
+                                                        style={{
+                                                          height: "38px",
+                                                          width: "40px",
+                                                        }}
+                                                        key={i}
+                                                        src={URL.createObjectURL(selectedFile[0]?.swatch)}
+                                                      />
+                                                    </div>
+                                                  )}
                                                 </Col>
-                                              </Row>
+                                              </Col>
+                                            </Row>
                                           </div>
                                           <i
                                             className="text-muted bx bxs-trash"
@@ -711,7 +715,7 @@ const EcommerceAddProduct = () => {
                                                   </p>
                                                 </Col>
                                               </Row>
-                                              
+
                                             </div>
                                             <i
                                               className="text-muted bx bxs-trash"
@@ -728,7 +732,7 @@ const EcommerceAddProduct = () => {
                                 </div>
                               </Col>
                             </Row>
-                          
+
                             <div className="mt-4">
                               <h5>More Info</h5>
                               <p>Please add more details of product below</p>
@@ -831,9 +835,9 @@ const EcommerceAddProduct = () => {
                                     }}
                                   >
                                     <Col md={3} className="mb-3">
-                                    <Label className="control-label">
-                                          Images
-                                        </Label>
+                                      <Label className="control-label">
+                                        Images
+                                      </Label>
                                       {!col?.images?.length ? (
                                         <Dropzone
                                           onDrop={acceptedFiles => {
@@ -890,7 +894,7 @@ const EcommerceAddProduct = () => {
                                               style={{
                                                 height: "38px",
                                                 width: "40px",
-                                                marginRight:10,
+                                                marginRight: 10,
                                               }}
                                               key={i}
                                               src={URL.createObjectURL(img)}
@@ -900,9 +904,9 @@ const EcommerceAddProduct = () => {
                                       )}
                                     </Col>
                                     <Col md={1}>
-                                    <Label className="control-label">
-                                          Color
-                                        </Label>
+                                      <Label className="control-label">
+                                        Color
+                                      </Label>
                                       <input
                                         className="form-control form-control-color mw-100 mb-3"
                                         type="color"
@@ -912,9 +916,9 @@ const EcommerceAddProduct = () => {
                                       />
                                     </Col>
                                     <Col md={1} className="mb-3">
-                                    <Label className="control-label">
-                                          Swatch
-                                        </Label>
+                                      <Label className="control-label">
+                                        Swatch
+                                      </Label>
                                       {!col?.swatch?.length ? (
                                         <Dropzone
                                           onDrop={acceptedFiles => {
@@ -952,7 +956,7 @@ const EcommerceAddProduct = () => {
                                                   <div className="mb-3">
                                                     <i className="display-7 text-muted bx bxs-cloud-upload" />
                                                   </div>
-                                                 
+
                                                 </div>
                                               </div>
                                             </div>
@@ -960,23 +964,23 @@ const EcommerceAddProduct = () => {
                                         </Dropzone>
                                       ) : (
                                         <div>
-                                        <img
-                                          style={{
-                                            height: "38px",
-                                            width: "40px",
-                                          }}
-                                          key={i}
-                                          src={URL.createObjectURL(
-                                            col?.swatch[0]
-                                          )}
-                                        />
+                                          <img
+                                            style={{
+                                              height: "38px",
+                                              width: "40px",
+                                            }}
+                                            key={i}
+                                            src={URL.createObjectURL(
+                                              col?.swatch[0]
+                                            )}
+                                          />
                                         </div>
                                       )}
                                     </Col>
                                     <Col md={2}>
-                                    <Label className="control-label">
-                                          Sku
-                                        </Label>
+                                      <Label className="control-label">
+                                        Sku
+                                      </Label>
                                       <input
                                         className="form-control mw-100 mb-3"
                                         type="text"
@@ -986,9 +990,9 @@ const EcommerceAddProduct = () => {
                                       />
                                     </Col>
                                     <Col md={2}>
-                                    <Label className="control-label">
-                                          Price
-                                        </Label>
+                                      <Label className="control-label">
+                                        Price
+                                      </Label>
                                       <input
                                         className="form-control  mw-100 mb-3"
                                         type="number"
@@ -998,9 +1002,9 @@ const EcommerceAddProduct = () => {
                                       />
                                     </Col>
                                     <Col md={2}>
-                                    <Label className="control-label">
-                                          Quantity
-                                        </Label>
+                                      <Label className="control-label">
+                                        Quantity
+                                      </Label>
                                       <input
                                         className="form-control  mw-200 mb-3"
                                         type="number"
@@ -1020,12 +1024,12 @@ const EcommerceAddProduct = () => {
                                       <i
                                         className="display-7 text-muted bx bxs-trash"
                                         style={{}}
-                                        onClick={()=>{
+                                        onClick={() => {
                                           const _colorsTags = [...Tagcolors];
-                                          _colorsTags.splice(i,1);
+                                          _colorsTags.splice(i, 1);
                                           setTagColors(_colorsTags)
-                                          const _colors= [...colors];
-                                          _colors.splice(i,1);
+                                          const _colors = [...colors];
+                                          _colors.splice(i, 1);
                                           setColors(_colors);
                                         }}
                                       />

@@ -74,8 +74,8 @@ const AllProducts = props => {
       sort: true,
       // eslint-disable-next-line react/display-name
       formatter: (cellContent, row) => (
-        <img style={{height:55,width:50}} src={row.mainImage}/>
-        
+        <img style={{ height: 55, width: 50 }} src={row.mainImage} />
+
       ),
     },
     {
@@ -87,8 +87,8 @@ const AllProducts = props => {
       dataField: "varientCount",
       text: "Varients",
       sort: true,
-       // eslint-disable-next-line react/display-name
-       formatter: (cellContent, row) => row.varientCount+" Varients",
+      // eslint-disable-next-line react/display-name
+      formatter: (cellContent, row) => row.varientCount + " Varients",
     },
     {
       dataField: "status",
@@ -110,14 +110,14 @@ const AllProducts = props => {
       text: "Price",
       sort: true,
       // eslint-disable-next-line react/display-name
-      formatter: (cellContent, row) => "$"+row?.selPrice,
+      formatter: (cellContent, row) => "$" + row?.selPrice,
     },
     {
       dataField: "quantity",
       text: "Inventory",
       sort: true,
       // eslint-disable-next-line react/display-name
-      formatter: (cellContent, row) => row?.quantity+" In Stock",
+      formatter: (cellContent, row) => row?.quantity + " In Stock",
     },
     {
       dataField: "pCategory",
@@ -131,7 +131,7 @@ const AllProducts = props => {
       text: "Vendor",
       sort: true,
     },
-    
+
     {
       dataField: "view",
       isDummyField: true,
@@ -143,7 +143,7 @@ const AllProducts = props => {
           type="button"
           color="primary"
           className="btn-sm btn-rounded"
-          
+
         >
           View Details
         </Button>
@@ -185,7 +185,7 @@ const AllProducts = props => {
 
   useEffect(() => {
     if (products && !products.length) {
-      dispatch(onGetProducts({page:1,perPage:10}));
+      dispatch(onGetProducts({ page: 1, perPage: 10 }));
     }
   }, [dispatch, products]);
 
@@ -305,7 +305,7 @@ const AllProducts = props => {
           <title>All Products | Givingz</title>
         </MetaTags>
         <Container fluid>
-          <Breadcrumbs title="Porducts" breadcrumbItem="All Products" />
+          <Breadcrumbs title="Products" breadcrumbItem="All Products" />
           <Row>
             <Col xs="12">
               <Card>
@@ -338,15 +338,15 @@ const AllProducts = props => {
                               <Col sm="8">
                                 <div className="text-sm-end">
                                   <Link to="/addProduct">
-                                  <Button
-                                    type="button"
-                                    color="success"
-                                    className="btn-rounded  mb-2 me-2"
-                                    
-                                  >
-                                    <i className="mdi mdi-plus me-1" />
-                                    Add New Product
-                                  </Button>
+                                    <Button
+                                      type="button"
+                                      color="success"
+                                      className="btn-rounded  mb-2 me-2"
+
+                                    >
+                                      <i className="mdi mdi-plus me-1" />
+                                      Add New Product
+                                    </Button>
                                   </Link>
                                 </div>
                               </Col>
