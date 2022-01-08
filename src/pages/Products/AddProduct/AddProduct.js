@@ -36,8 +36,7 @@ import { getHex } from "./constants"
 const EcommerceAddProduct = () => {
   const [selectedFiles, setselectedFiles] = useState([])
   const [selectedFile, setSelectedFile] = useState([])
-  const [activeTab, setactiveTab] = useState(2)
-  const [activeColor, setActiveColor] = useState(false)
+  const [activeTab, setactiveTab] = useState(1)
   const [activeSize, setActiveSize] = useState(false)
   const [activeMaterial, setActiveMaterial] = useState(false)
 
@@ -56,13 +55,13 @@ const EcommerceAddProduct = () => {
       }
     }
   }
-  const [colors, setColors] = React.useState([])
-  const [Tagcolors, setTagColors] = React.useState([])
-  const [sizes, setSizes] = React.useState([])
-  const [toolTips, setToolTips] = React.useState({
+  const [colors, setColors] = useState([])
+  const [Tagcolors, setTagColors] = useState([])
+  const [sizes, setSizes] = useState([])
+  const [toolTips, setToolTips] = useState({
     comments: true,
   })
-  const [material, setMaterial] = React.useState([])
+  const [material, setMaterial] = useState([])
   const options = [
     { value: "AK", label: "Men-Jeans" },
     { value: "HI", label: "Men-Shirts" },
@@ -110,6 +109,11 @@ const EcommerceAddProduct = () => {
 
     const i = Math.floor(Math.log(bytes) / Math.log(k))
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
+  }
+
+  function addVariantDetails() {
+    colors.push({ color: '', image: '' })
+    setColors([...colors])
   }
 
   const setVlues = e => {
@@ -234,10 +238,6 @@ const EcommerceAddProduct = () => {
     setSelectedFile(file)
     console.log(file)
   }
-
-  useEffect(() => {
-    setactiveTab(1);
-  }, [])
 
   return (
     <React.Fragment>
@@ -739,16 +739,6 @@ const EcommerceAddProduct = () => {
                               <Row>
                                 <Col sm="2" className="mb-1">
                                   <Button
-                                    onClick={() => setActiveColor(!activeColor)}
-                                    color={
-                                      activeColor ? "primary" : "secondary"
-                                    }
-                                  >
-                                    Colors
-                                  </Button>
-                                </Col>
-                                <Col sm="2" className="mb-1">
-                                  <Button
                                     onClick={() => setActiveSize(!activeSize)}
                                     color={activeSize ? "primary" : "secondary"}
                                   >
@@ -769,7 +759,7 @@ const EcommerceAddProduct = () => {
                                 </Col>
                               </Row>
                               <Row>
-                                {activeColor && (
+                                {/* {activeColor && (
                                   <Col sm="4" className="mt-4">
                                     <ReactTagInput
                                       tags={Tagcolors}
@@ -787,7 +777,7 @@ const EcommerceAddProduct = () => {
                                       placeholder="Type color and press enter"
                                     />
                                   </Col>
-                                )}
+                                )} */}
                                 {activeSize && (
                                   <Col sm="4" className="mt-4">
                                     <ReactTagInput
@@ -814,6 +804,18 @@ const EcommerceAddProduct = () => {
                                     />
                                   </Col>
                                 )}
+                              </Row>
+                              <Row>
+                                <Col sm="4" className="mb-1 mt-4">
+                                  <Button
+                                    onClick={addVariantDetails}
+                                    color={"primary"}
+                                    className="d-flex"
+                                  >
+                                    <i className="mt-1 mr-1 bx bx-plus" />
+                                    <div>Add Variant</div>
+                                  </Button>
+                                </Col>
                               </Row>
                             </div>
                             {!!colors.length && (
