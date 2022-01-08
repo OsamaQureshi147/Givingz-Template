@@ -36,7 +36,7 @@ import { getHex } from "./constants"
 const EcommerceAddProduct = () => {
   const [selectedFiles, setselectedFiles] = useState([])
   const [selectedFile, setSelectedFile] = useState([])
-  const [activeTab, setactiveTab] = useState(2)
+  const [activeTab, setactiveTab] = useState(1)
   const [activeColor, setActiveColor] = useState(false)
   const [activeSize, setActiveSize] = useState(false)
   const [activeMaterial, setActiveMaterial] = useState(false)
@@ -56,13 +56,13 @@ const EcommerceAddProduct = () => {
       }
     }
   }
-  const [colors, setColors] = React.useState([])
-  const [Tagcolors, setTagColors] = React.useState([])
-  const [sizes, setSizes] = React.useState([])
-  const [toolTips, setToolTips] = React.useState({
+  const [colors, setColors] = useState([])
+  const [Tagcolors, setTagColors] = useState([])
+  const [sizes, setSizes] = useState([])
+  const [toolTips, setToolTips] = useState({
     comments: true,
   })
-  const [material, setMaterial] = React.useState([])
+  const [material, setMaterial] = useState([])
   const options = [
     { value: "AK", label: "Men-Jeans" },
     { value: "HI", label: "Men-Shirts" },
@@ -234,10 +234,6 @@ const EcommerceAddProduct = () => {
     setSelectedFile(file)
     console.log(file)
   }
-
-  useEffect(() => {
-    setactiveTab(1);
-  }, [])
 
   return (
     <React.Fragment>
