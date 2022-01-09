@@ -24,10 +24,9 @@ import StarRatings from "react-star-ratings"
 //Import Product Images
 import { productImages } from "assets/images/product"
 
-const ProductDetail = ({ product,uploadProduct,addingProduct }) => {
+const ProductDetail = ({ product, uploadProduct, addingProduct }) => {
   const [activeTab, setActiveTab] = useState("1")
-  const [images, setImages] = useState(product?.images)
-
+  const [images, setImages] = useState([...product.image, ...product?.images])
   const toggleTab = tab => {
     if (activeTab !== tab) {
       setActiveTab(tab)
@@ -56,45 +55,45 @@ const ProductDetail = ({ product,uploadProduct,addingProduct }) => {
                       <Row>
                         <Col md="2" xs="3">
                           <Nav className="flex-column" pills>
-                          {images &&
-                          images.map((option, i) => (
-                            <NavItem key={i}>
-                              <NavLink
-                                className={classnames({
-                                  active: activeTab === `${i+1}`,
-                                })}
-                                onClick={() => {
-                                  toggleTab(`${i+1}`)
-                                }}
-                              >
-                                <img
-                                  src={images[i]?.preview}
-                                  alt=""
-                                  onClick={() => {
-                                    imageShow(images[i]?.preview, 1)
-                                  }}
-                                  className="img-fluid mx-auto d-block rounded"
-                                />
-                              </NavLink>
-                            </NavItem>
-                          ))}
+                            {images &&
+                              images.map((option, i) => (
+                                <NavItem key={i}>
+                                  <NavLink
+                                    className={classnames({
+                                      active: activeTab === `${i + 1}`,
+                                    })}
+                                    onClick={() => {
+                                      toggleTab(`${i + 1}`)
+                                    }}
+                                  >
+                                    <img
+                                      src={images[i]?.preview}
+                                      alt=""
+                                      onClick={() => {
+                                        imageShow(images[i]?.preview, 1)
+                                      }}
+                                      className="img-fluid mx-auto d-block rounded"
+                                    />
+                                  </NavLink>
+                                </NavItem>
+                              ))}
                           </Nav>
                         </Col>
                         <Col md={{ size: 7, offset: 1 }} xs="9">
                           <TabContent activeTab={activeTab}>
-                            {images?.map((_img,i)=>(
+                            {images?.map((_img, i) => (
                               <TabPane key={i} tabId={`${i + 1}`}>
-                              <div>
-                                <img
-                                  src={images[i]?.preview}
-                                  alt=""
-                                  id="expandedImg1"
-                                  className="img-fluid mx-auto d-block"
-                                />
-                              </div>
-                            </TabPane>
+                                <div>
+                                  <img
+                                    src={images[i]?.preview}
+                                    alt=""
+                                    id="expandedImg1"
+                                    className="img-fluid mx-auto d-block"
+                                  />
+                                </div>
+                              </TabPane>
                             ))}
-                            
+
                             {/* <TabPane tabId="2">
                               <div>
                                 <img
@@ -224,36 +223,36 @@ const ProductDetail = ({ product,uploadProduct,addingProduct }) => {
                         {product?.colors && (
                           <h5 className="font-size-15">Colors :</h5>
                         )}
-                         
+
                         {product?.colors &&
                           product?.colors.map((option, i) => (
-                            
+
                             <Link key={i} onClick={() => {
                               console.log(option?.images);
                               setImages(option?.images)
                             }}>
                               {option?.swatch ?
-                            
-                              <img
-                              className="product-color-item border rounded"
-                              style={{
-                                height: "30px",
-                                width: "50px",
-                                verticalAlign: "inherit",
-                              }}
-                               src={URL.createObjectURL(option?.swatch[0])}/>
-                             
-                              :
-                              
-                              <div
-                                className="product-color-item border rounded"
-                                style={{
-                                  background: option?.color,
-                                  height: "30px",
-                                  width: "50px",
-                                }}
-                              ></div>
-                              
+
+                                <img
+                                  className="product-color-item border rounded"
+                                  style={{
+                                    height: "30px",
+                                    width: "50px",
+                                    verticalAlign: "inherit",
+                                  }}
+                                  src={URL.createObjectURL(option?.swatch[0])} />
+
+                                :
+
+                                <div
+                                  className="product-color-item border rounded"
+                                  style={{
+                                    background: option?.color,
+                                    height: "30px",
+                                    width: "50px",
+                                  }}
+                                ></div>
+
                               }
                             </Link>
                           ))}
@@ -331,8 +330,8 @@ const ProductDetail = ({ product,uploadProduct,addingProduct }) => {
                         disabled={addingProduct}
                       >
                         <i className="bx bx-upload me-2" />
-                        {addingProduct?"Publishing Product...":"Publish Product"}
-                        
+                        {addingProduct ? "Publishing Product..." : "Publish Product"}
+
                       </Button>
                     </div>
                   </div>
