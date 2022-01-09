@@ -37,7 +37,6 @@ const EcommerceAddProduct = () => {
   const [selectedFiles, setselectedFiles] = useState([])
   const [selectedFile, setSelectedFile] = useState([])
   const [activeTab, setactiveTab] = useState(1)
-  const [activeColor, setActiveColor] = useState(false)
   const [activeSize, setActiveSize] = useState(false)
   const [activeMaterial, setActiveMaterial] = useState(false)
 
@@ -110,6 +109,11 @@ const EcommerceAddProduct = () => {
 
     const i = Math.floor(Math.log(bytes) / Math.log(k))
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
+  }
+
+  function addVariantDetails() {
+    colors.push({ color: '', image: '' })
+    setColors([...colors])
   }
 
   const setVlues = e => {
@@ -735,16 +739,6 @@ const EcommerceAddProduct = () => {
                               <Row>
                                 <Col sm="2" className="mb-1">
                                   <Button
-                                    onClick={() => setActiveColor(!activeColor)}
-                                    color={
-                                      activeColor ? "primary" : "secondary"
-                                    }
-                                  >
-                                    Colors
-                                  </Button>
-                                </Col>
-                                <Col sm="2" className="mb-1">
-                                  <Button
                                     onClick={() => setActiveSize(!activeSize)}
                                     color={activeSize ? "primary" : "secondary"}
                                   >
@@ -765,7 +759,7 @@ const EcommerceAddProduct = () => {
                                 </Col>
                               </Row>
                               <Row>
-                                {activeColor && (
+                                {/* {activeColor && (
                                   <Col sm="4" className="mt-4">
                                     <ReactTagInput
                                       tags={Tagcolors}
@@ -783,7 +777,7 @@ const EcommerceAddProduct = () => {
                                       placeholder="Type color and press enter"
                                     />
                                   </Col>
-                                )}
+                                )} */}
                                 {activeSize && (
                                   <Col sm="4" className="mt-4">
                                     <ReactTagInput
@@ -810,6 +804,18 @@ const EcommerceAddProduct = () => {
                                     />
                                   </Col>
                                 )}
+                              </Row>
+                              <Row>
+                                <Col sm="4" className="mb-1 mt-4">
+                                  <Button
+                                    onClick={addVariantDetails}
+                                    color={"primary"}
+                                    className="d-flex"
+                                  >
+                                    <i className="mt-1 mr-1 bx bx-plus" />
+                                    <div>Add Variant</div>
+                                  </Button>
+                                </Col>
                               </Row>
                             </div>
                             {!!colors.length && (
